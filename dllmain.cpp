@@ -1,7 +1,5 @@
 #include "utils.h"
 
-#include "source-sdk/sdk.hpp"
-
 #pragma comment(lib, "d3d9.lib")
 #pragma comment(lib, "d3dx9.lib")
 
@@ -11,8 +9,6 @@ tEndScene oEndScene = nullptr;
 
 extern LPDIRECT3DDEVICE9 pDevice = nullptr;
 extern LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
-
-//i_material ggg;
 
 WNDPROC oWndProc;
 DWORD* D3d9VTable;
@@ -26,27 +22,6 @@ const char* windowName = "Counter-Strike: Global Offensive";
 void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
     if (!pDevice)
         pDevice = o_pDevice;
-    
-
-    /*
-    if (!initialized) InitImGui(pDevice);
-    else {
-        ImGui_ImplDX9_NewFrame();
-        ImGui_ImplWin32_NewFrame();
-
-        ImGui::NewFrame();
-
-        if (g_ShowMenu)
-        {
-            bool bShow = true;
-            ImGui::ShowDemoWindow(&bShow);
-        }
-
-        ImGui::EndFrame();
-        ImGui::Render();
-        ImGui_ImplDX9_RenderDrawData(ImGui::GetDrawData());
-    }
-    */
     
     static bool init = true;
     if (init)
@@ -63,23 +38,11 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
         ImGui_ImplDX9_NewFrame();
         ImGui_ImplWin32_NewFrame();
 
-
         ImGui::NewFrame();
-
-        ImVec2 windSize;
-        windSize.x = 300;
-        windSize.y = 300;
-
-
-
+        
         ImGui::Begin("Window");
 
-        ImGui::Text("Hello, world!");
-        ImGui::Checkbox("Chams", &chamsOn);
-
-        ImGui::SetWindowSize("Window", windSize);
-
-        //ImGui::EndFrame();
+        ImGui::Text("Test");
 
         ImGui::Render();
 
@@ -90,12 +53,6 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 }
 
 LRESULT __stdcall WndProc(const HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
-    /*
-    if (true) {
-        return ImGui_ImplWin32_WndProcHandler(hWnd, uMsg, wParam, lParam);
-    }
-    */
-
     if(showMenu && ImGui_ImplWin32_WndProcHandler(hWnd, uMsg, wParam, lParam))
         return true;
 
