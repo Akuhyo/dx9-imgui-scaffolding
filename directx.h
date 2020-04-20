@@ -4,8 +4,6 @@
 
 typedef HRESULT(APIENTRY* tEndScene)(LPDIRECT3DDEVICE9 pDevice);
 
-//bool GetD3D9Device(void** pTable, size_t size);
-
 static HWND window;
 
 extern int windowHeight, windowWidth;
@@ -16,10 +14,8 @@ using namespace ImGui;
 
 bool initialized;
 
-// window height and width
 int windowHeight, windowWidth;
 
-// callback to be called for each toplevel window
 BOOL CALLBACK enumWind(HWND handle, LPARAM lp) {
 	DWORD procId;
 	GetWindowThreadProcessId(handle, &procId);
@@ -30,7 +26,6 @@ BOOL CALLBACK enumWind(HWND handle, LPARAM lp) {
 	return FALSE;
 }
 
-// get process window
 HWND GetProcessWindow() {
 	window = NULL;
 
@@ -47,7 +42,6 @@ HWND GetProcessWindow() {
 	return window;
 }
 
-// get get vTable 
 bool GetD3D9Device(void** pTable, size_t size) {
 	if (!pTable)
 		return false;
