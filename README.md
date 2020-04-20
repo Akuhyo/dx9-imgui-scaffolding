@@ -4,3 +4,5 @@ ______________________________________________
 
 just scaffolding for endscene imgui dx9 overlay, already
 set up with insert key toggling
+
+make sure to include directx sdk & imgui
