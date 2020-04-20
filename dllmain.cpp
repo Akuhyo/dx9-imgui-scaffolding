@@ -15,7 +15,6 @@ DWORD* D3d9VTable;
 DWORD D3d9Base;
 
 bool showMenu = true;
-bool chamsOn = false;
 
 const char* windowName = "Counter-Strike: Global Offensive";
 
