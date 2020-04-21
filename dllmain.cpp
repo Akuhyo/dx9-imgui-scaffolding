@@ -18,6 +18,22 @@ bool showMenu = true;
 
 const char* windowName = "Counter-Strike: Global Offensive";
 
+void DrawImGui() {
+        ImGui_ImplDX9_NewFrame();
+        ImGui_ImplWin32_NewFrame();
+
+        ImGui::NewFrame();
+        
+        ImGui::Begin("Window");
+        
+        // start doing ur imgui drawing here
+        ImGui::Text("Test");
+
+        ImGui::Render();
+
+        ImGui_ImplDX9_RenderDrawData(ImGui::GetDrawData());
+}
+
 void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
     if (!pDevice)
         pDevice = o_pDevice;
@@ -34,18 +50,7 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
     }
 
     if (showMenu) {
-        ImGui_ImplDX9_NewFrame();
-        ImGui_ImplWin32_NewFrame();
-
-        ImGui::NewFrame();
-        
-        ImGui::Begin("Window");
-
-        ImGui::Text("Test");
-
-        ImGui::Render();
-
-        ImGui_ImplDX9_RenderDrawData(ImGui::GetDrawData());
+        DrawImGui();
     }
 
     oEndScene(pDevice);
